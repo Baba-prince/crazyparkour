@@ -117,7 +117,7 @@
     previewCtx.clearRect(0, 0, preview.width, preview.height);
     previewCtx.fillStyle = "rgba(255,255,255,0.04)";
     previewCtx.fillRect(0, 0, preview.width, preview.height);
-    drawCharacter(previewCtx, 36, 40, 48, 70, 1, false);
+    drawCharacter(previewCtx, 24, 28, 48, 70, 1, false);
   }
 
   function buildSwatches(containerId, colors, key) {
