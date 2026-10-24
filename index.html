@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Crazy Parkour</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+    <header class="top">
+      <div class="title-row">
+        <div>
+          <h1>Crazy <span>Parkour</span></h1>
+          <p class="tag">30 stages · harder every 5 · customize your runner</p>
+        </div>
+        <button type="button" id="musicBtn" class="music-btn" aria-pressed="false" title="Mute music">♪ Music</button>
+      </div>
+    </header>
+
+    <div class="stage-wrap">
+      <canvas id="game" width="960" height="540" aria-label="Crazy Parkour game"></canvas>
+
+      <div id="overlay" class="overlay">
+        <div class="card custom-card" id="customizeCard">
+          <h2>Customize your character</h2>
+          <p>Pick your look, then hit the parkour.</p>
+
+          <div class="preview-wrap">
+            <canvas id="preview" width="120" height="140" aria-label="Character preview"></canvas>
+          </div>
+
+          <div class="custom-grid">
+            <label class="custom-field">
+              <span>Body</span>
+              <div class="swatches" id="bodySwatches" data-key="body"></div>
+            </label>
+            <label class="custom-field">
+              <span>Trim</span>
+              <div class="swatches" id="trimSwatches" data-key="trim"></div>
+            </label>
+            <label class="custom-field">
+              <span>Eyes</span>
+              <select id="eyeSelect">
+                <option value="dot">Dots</option>
+                <option value="happy">Happy</option>
+                <option value="cool">Cool shades</option>
+                <option value="wink">Wink</option>
+              </select>
+            </label>
+            <label class="custom-field">
+              <span>Hat</span>
+              <select id="hatSelect">
+                <option value="none">None</option>
+                <option value="cap">Cap</option>
+                <option value="crown">Crown</option>
+                <option value="band">Headband</option>
+                <option value="afro">Poof</option>
+              </select>
+            </label>
+          </div>
+
+          <button id="customizeDoneBtn" type="button">Continue</button>
+        </div>
+
+        <div class="card hidden" id="menuCard">
+          <h2>Ready to run?</h2>
+          <p>Each stage adds a new obstacle. Difficulty only jumps every 5 stages. From stage 5 on, red X bricks on platforms kill you if you step on them — jump over!</p>
+          <ul class="controls">
+            <li><kbd>A</kbd>/<kbd>D</kbd> or ← → move</li>
+            <li><kbd>W</kbd> / <kbd>Space</kbd> / ↑ jump — hold for higher</li>
+            <li>Stage 1 swim: ↑ float · <kbd>S</kbd> dive · dodge red bricks & spikes</li>
+            <li><kbd>R</kbd> restart stage</li>
+          </ul>
+          <div class="menu-actions">
+            <button id="startBtn" type="button">Start Stage 1</button>
+            <button id="editLookBtn" type="button" class="btn-secondary">Edit look</button>
+          </div>
+        </div>
+
+        <div class="card hidden" id="clearCard">
+          <h2>Stage clear!</h2>
+          <p id="clearText">Nice jump.</p>
+          <button id="nextBtn" type="button">Next stage</button>
+        </div>
+
+        <div class="card hidden" id="failCard">
+          <h2>Died!</h2>
+          <p>Shake it off. Try again.</p>
+          <button id="retryBtn" type="button">Retry</button>
+        </div>
+
+        <div class="card hidden" id="winCard">
+          <h2>You beat all 30!</h2>
+          <p>Every tier, every gap. Legend.</p>
+          <button id="againBtn" type="button">Play again</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="hud">
+      <div><span class="label">Stage</span> <strong id="hudStage">1</strong> / 30</div>
+      <div><span class="label">Tier</span> <strong id="hudTier">Warm-up</strong></div>
+      <div><span class="label">Obstacle</span> <strong id="hudObstacle">Gaps</strong></div>
+      <div><span class="label">Deaths</span> <strong id="hudDeaths">0</strong></div>
+    </div>
+  </div>
+
+  <script src="music.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
